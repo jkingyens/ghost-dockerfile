@@ -12,20 +12,15 @@ RUN mkdir -p /ghost
 RUN cd /ghost && wget https://ghost.org/zip/ghost-0.5.0.zip -O ghost.zip
 RUN cd /ghost && unzip ghost.zip && rm -f ghost.zip
 RUN cd /ghost && npm install --production
-RUN rm -rf /ghost/content/themes/casper
-
-# Mount volumes.
-VOLUME /ghost-override
+RUN rm -rf /ghost/content
+RUN rm -rf /ghost/config.js
 
 # Define working directory.
 WORKDIR /ghost
-
-# Add files.
-ADD start.bash /ghost-start
 
 # Expose ports.
 EXPOSE 2368
 
 # Define an entry point.
 ENV NODE_ENV production
-CMD ["bash", "/ghost-start"]
+CMD npm start 
