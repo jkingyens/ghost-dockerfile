@@ -9,7 +9,7 @@ FROM dockerfile/nodejs
 
 # Install Ghost
 RUN mkdir -p /ghost
-RUN cd /ghost && wget https://ghost.org/zip/ghost-0.5.0.zip -O ghost.zip
+RUN cd /ghost && wget https://ghost.org/zip/ghost-0.5.1.zip -O ghost.zip
 RUN cd /ghost && unzip ghost.zip && rm -f ghost.zip
 RUN cd /ghost && npm install --production
 RUN rm -rf /ghost/content
@@ -23,4 +23,4 @@ EXPOSE 2368
 
 # Define an entry point.
 ENV NODE_ENV production
-CMD npm start 
+CMD npm start
