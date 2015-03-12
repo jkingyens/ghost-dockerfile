@@ -1,10 +1,11 @@
-FROM node:0.10.32
+FROM iojs:1.2 
 RUN mkdir -p /ghost
 WORKDIR /ghost
-RUN curl -OL https://ghost.org/zip/ghost-0.5.3.zip
+RUN curl -OL https://ghost.org/zip/ghost-0.5.10.zip
+RUN apt-get update
 RUN apt-get install unzip
-RUN unzip ghost-0.5.3.zip
-RUN rm ghost-0.5.3.zip
+RUN unzip ghost-0.5.10.zip
+RUN rm ghost-0.5.10.zip
 RUN npm install --production
 RUN rm -rf content
 RUN rm -rf config.js
